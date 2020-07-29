@@ -24,8 +24,8 @@ function resetGrid(){
         columns = parseInt(prompt("Now enter the number of columns","columns"), 10);
     } while (isNaN(columns) || columns < 0 || columns > 200);
 
-    rowSizes = 100/(rows+0.5);
-    columnSizes = 100/(columns+0.5);
+    rowSizes = 100/(rows);
+    columnSizes = 100/(columns);
 
     squaresContainer.innerHTML = "";
     setGridSize(rows,columns);
@@ -37,8 +37,15 @@ function resetGrid(){
 }
 
 function setSquareSizes(e){
-    e.style.height = rowSizes + "vmin";
-    e.style.width = columnSizes + "vmin";
+    if (rowSizes > columnSizes || rowSizes == columnSizes){
+        e.style.height = columnSizes + "vmin";
+        e.style.width = columnSizes + "vmin";
+    }else if (columnSizes > rowSizes){
+        e.style.height = rowSizes + "vmin";
+        e.style.width = rowSizes + "vmin";
+    }else{
+
+    }
 }
 
 function setGridSize(rows, columns){
