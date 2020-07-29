@@ -1,3 +1,6 @@
+let rowSizes;
+let columnSizes;
+
 const squaresContainer = document.querySelector('#squares-container');
 
 makeSquares(4, 4);
@@ -12,33 +15,34 @@ resetButton.addEventListener("click", resetGrid)
 
 function resetGrid(){
     let rows;
-    let columns;    
+    let columns; 
 
     do{
-        rows = parseInt(prompt("","rows"), 10);
-    } while (isNaN(rows) || rows < 0 || rows > 10000);
+        rows = parseInt(prompt("Enter the number of rows","rows"), 10);
+    } while (isNaN(rows) || rows < 0 || rows > 200);
     do{
-        columns = parseInt(prompt("","columns"), 10);
-    } while (isNaN(columns) || columns < 0 || columns > 10000);
+        columns = parseInt(prompt("Now enter the number of columns","columns"), 10);
+    } while (isNaN(columns) || columns < 0 || columns > 200);
+
+    rowSizes = 100/(rows+0.5);
+    columnSizes = 100/(columns+0.5);
 
     squaresContainer.innerHTML = "";
     setGridSize(rows,columns);
     makeSquares(rows,columns);
 
     const squares = document.querySelectorAll('.squares');
-    // squares.forEach(setSquareSizes(rows, columns), e);
+    squares.forEach(setSquareSizes);
     squares.forEach(colorSquare);
 }
 
-// function setSquareSizes(rows, columns){
-//     console.log(e);
-//     e.style.height = "rows";
-//     e.style.width = "columns";
-// }
+function setSquareSizes(e){
+    e.style.height = rowSizes + "vmin";
+    e.style.width = columnSizes + "vmin";
+}
 
 function setGridSize(rows, columns){
-    let rowSizes = 100/(rows+0.5);
-    let columnSizes = 100/(columns+0.5);
+
 
     squaresContainer.style.gridTemplateRows = `repeat(${rows}, ${rowSizes}vmin)`;
     squaresContainer.style.gridTemplateColumns = `repeat(${columns}, ${columnSizes}vmin)`;
