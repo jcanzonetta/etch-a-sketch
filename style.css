@@ -5,7 +5,7 @@
 
 
 .squares{
-    border: 2px solid black;
+    border: 1px solid black;
     height: 18vmin;
     width: 18vmin;
 }
@@ -13,8 +13,8 @@
 #squares-container{
     margin-top: 5vmin;
     display:grid;
-    grid-template-columns: repeat(4, 20vmin);
     grid-template-rows: repeat(4, 20vmin);
+    grid-template-columns: repeat(4, 20vmin);
     place-items: center center;
     justify-content: center;
 }
