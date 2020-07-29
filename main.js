@@ -4,16 +4,7 @@ makeSquares(4, 4);
 
 const squares = document.querySelectorAll('.squares');
 
-squares.forEach((square) =>{
-    square.addEventListener('mouseenter', () =>{
-        square.classList.remove('highlighted');
-        square.classList.add('highlight');
-    })
-    square.addEventListener('mouseleave', () =>{
-        square.classList.remove('highlight');
-        square.classList.add('highlighted');
-    })
-})
+squares.forEach(colorSquare);
 
 const resetButton = document.querySelector('#reset');
 
@@ -33,6 +24,16 @@ function setGridSize(rows, columns){
 
 
 
+function colorSquare(e){
+    e.addEventListener('mouseenter', () =>{
+        e.classList.remove('highlighted');
+        e.classList.add('highlight');
+    })
+    e.addEventListener('mouseleave', () =>{
+        e.classList.remove('highlight');
+        e.classList.add('highlighted');
+    })
+}
 
 function makeSquares(rows, columns){
     for(let i=0; i<(rows*columns); i++){
