@@ -1,5 +1,6 @@
 #reset-container{
     text-align:center;
+    margin-top: 5vmin;
 }
 
 
@@ -10,16 +11,21 @@
 }
 
 #squares-container{
+    margin-top: 5vmin;
     display:grid;
     grid-template-columns: repeat(4, 20vmin);
     grid-template-rows: repeat(4, 20vmin);
     place-items: center center;
+    justify-content: center;
 }
 
 .highlight{
     background-color: black;
+    scale: 1.1;
+    transition-duration: 0.25s;
 }
 
 .highlighted{
     background-color: gray;
+    transition-duration: 0.25s;
 }
